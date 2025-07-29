@@ -51,7 +51,7 @@ export const ResultsSection = () => {
                       <Thermometer className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-foreground text-lg mb-2">Instant Temperature Drop</h4>
+                      <h4 className="font-bold text-foreground text-lg mb-2">Temperature Drop</h4>
                       <p className="text-muted-foreground">
                         Feel rooms become 5-15°F cooler immediately after installation. 
                         No more hot spots by windows, even during peak Gulf Coast summer heat.
