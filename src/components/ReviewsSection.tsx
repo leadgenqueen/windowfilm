@@ -107,15 +107,6 @@ export const ReviewsSection = () => {
           ))}
         </div>
 
-        <div className="text-center">
-          <Button 
-            variant="outline" 
-            className="border-coastal-blue text-coastal-blue hover:bg-coastal-blue hover:text-white"
-            onClick={() => window.open('https://www.google.com/search?q=emerald+coast+window+films+reviews', '_blank')}
-          >
-            See All 200+ Google Reviews
-          </Button>
-        </div>
       </div>
     </section>
   );
