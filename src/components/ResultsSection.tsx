@@ -20,24 +20,17 @@ export const ResultsSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Image/Video Placeholder */}
           <div className="relative">
-            <div 
-              className="aspect-video bg-cover bg-center rounded-lg shadow-premium relative overflow-hidden"
-              style={{ backgroundImage: `url(${resultsImage})` }}
-            >
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="bg-white/90 hover:bg-white text-foreground shadow-premium"
-                  onClick={() => {
-                    // In a real implementation, this would open a video player
-                    alert("Video would play here - showcasing before/after window film installation results");
-                  }}
-                >
-                  <Play className="mr-2 h-6 w-6" />
-                  Watch Transformation Video
-                </Button>
-              </div>
+            <div className="aspect-video rounded-lg shadow-premium overflow-hidden">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/E6tOhbjdroY?start=1"
+                title="Window Film Transformation Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
             </div>
             <p className="text-center text-sm text-muted-foreground mt-4 italic">
               "Installed in Hours. Enjoyed for Years."
