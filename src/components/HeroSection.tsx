@@ -62,7 +62,7 @@ export const HeroSection = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button 
             size="lg" 
-            className="bg-accent hover:bg-accent/90 text-accent-foreground shadow-cta text-lg px-8 py-4 h-auto font-semibold"
+            className="bg-cta-green hover:bg-cta-green-hover text-white shadow-cta text-lg px-8 py-4 h-auto font-semibold"
             onClick={() => document.getElementById('consultation-form')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Get My Free Consultation ($500 Value)

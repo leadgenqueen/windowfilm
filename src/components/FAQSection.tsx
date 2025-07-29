@@ -99,7 +99,7 @@ export const FAQSection = () => {
                   and provide personalized recommendations for your property.
                 </p>
                 <button 
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg font-semibold text-lg shadow-cta transition-all duration-300 inline-flex items-center space-x-2"
+                  className="bg-cta-green hover:bg-cta-green-hover text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-cta transition-all duration-300 inline-flex items-center space-x-2"
                   onClick={() => window.location.href = "tel:8507479994"}
                 >
                   <Phone className="h-5 w-5" />

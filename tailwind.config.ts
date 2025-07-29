@@ -59,6 +59,8 @@ export default {
 				'sand-warm': 'hsl(var(--sand-warm))',
 				'success-green': 'hsl(var(--success-green))',
 				'trust-gold': 'hsl(var(--trust-gold))',
+				'cta-green': 'hsl(var(--cta-green))',
+				'cta-green-hover': 'hsl(var(--cta-green-hover))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

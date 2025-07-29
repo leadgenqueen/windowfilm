@@ -127,7 +127,7 @@ export const ResultsSection = () => {
 
             <Button 
               size="lg" 
-              className="w-full bg-coastal-blue hover:bg-ocean-deep text-white shadow-premium text-lg py-4 h-auto font-semibold"
+              className="w-full bg-cta-green hover:bg-cta-green-hover text-white shadow-premium text-lg py-4 h-auto font-semibold"
               onClick={() => document.getElementById('consultation-form')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Experience These Results Yourself

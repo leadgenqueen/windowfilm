@@ -132,7 +132,7 @@ export const ThankYouPage = () => {
                 </div>
 
                 <Button 
-                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground shadow-cta font-semibold"
+                  className="w-full bg-cta-green hover:bg-cta-green-hover text-white shadow-cta font-semibold"
                   onClick={() => window.location.href = "tel:8507479994"}
                 >
                   Call Now for Immediate Service

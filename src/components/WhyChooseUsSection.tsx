@@ -156,7 +156,7 @@ export const WhyChooseUsSection = () => {
           </p>
           <Button 
             size="lg" 
-            className="bg-coastal-blue hover:bg-ocean-deep text-white shadow-premium text-lg px-8 py-4 h-auto font-semibold"
+            className="bg-cta-green hover:bg-cta-green-hover text-white shadow-premium text-lg px-8 py-4 h-auto font-semibold"
             onClick={() => document.getElementById('consultation-form')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Get My Free Quote Today

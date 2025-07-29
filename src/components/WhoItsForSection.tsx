@@ -119,7 +119,7 @@ export const WhoItsForSection = () => {
             Ready to experience the difference professional window film makes?
           </p>
           <button 
-            className="bg-coastal-blue hover:bg-ocean-deep text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-premium transition-all duration-300"
+            className="bg-cta-green hover:bg-cta-green-hover text-white px-8 py-4 rounded-lg font-semibold text-lg shadow-premium transition-all duration-300"
             onClick={() => document.getElementById('consultation-form')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Get My Free Quote Today

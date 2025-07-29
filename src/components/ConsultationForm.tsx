@@ -176,7 +176,7 @@ export const ConsultationForm = () => {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-accent hover:bg-accent/90 text-accent-foreground shadow-cta text-lg py-6 h-auto font-semibold"
+                  className="w-full bg-cta-green hover:bg-cta-green-hover text-white shadow-cta text-lg py-6 h-auto font-semibold"
                 >
                   {isSubmitting ? "Scheduling Your Consultation..." : "Schedule My Free Estimate"}
                 </Button>
