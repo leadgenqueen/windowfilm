@@ -2,6 +2,7 @@ import { CheckCircle, Phone, Calendar, Star, Clock, Shield } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PhoneButton } from "@/components/PhoneButton";
+import { Footer } from "@/components/Footer";
 
 export const ThankYouPage = () => {
   return (
@@ -200,6 +201,8 @@ export const ThankYouPage = () => {
           </div>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 };
