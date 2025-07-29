@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import logoImage from "@/assets/emerald-coast-logo-updated.png";
 
 export const Footer = () => {
   return (
@@ -7,9 +8,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-4 text-accent">
-              Emerald Coast Window Films
-            </h3>
+            <img src={logoImage} alt="Emerald Coast Window Films" className="h-16 mb-4" />
             <p className="text-coastal-blue-light mb-4">
               Serving the Gulf Coast for over 30 years with premium window film solutions 
               that reduce heat, block UV rays, and enhance comfort while maintaining your views.

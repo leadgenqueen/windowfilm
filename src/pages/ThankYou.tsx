@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PhoneButton } from "@/components/PhoneButton";
 import { Footer } from "@/components/Footer";
-import logoImage from "@/assets/emerald-coast-logo.png";
+import logoImage from "@/assets/emerald-coast-logo-updated.png";
 
 export const ThankYouPage = () => {
   return (
