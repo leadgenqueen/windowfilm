@@ -177,28 +177,6 @@ export const ThankYouPage = () => {
             </CardContent>
           </Card>
 
-          {/* Additional Resources */}
-          <div className="text-center">
-            <h3 className="text-xl font-semibold text-foreground mb-4">
-              While You Wait, Learn More About Window Film
-            </h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button 
-                variant="outline" 
-                className="border-coastal-blue text-coastal-blue hover:bg-coastal-blue hover:text-white"
-                onClick={() => window.open('https://www.google.com/search?q=emerald+coast+window+films+reviews', '_blank')}
-              >
-                Read Our Reviews
-              </Button>
-              <Button 
-                variant="outline"
-                className="border-coastal-blue text-coastal-blue hover:bg-coastal-blue hover:text-white"
-                onClick={() => window.location.href = "/"}
-              >
-                Return to Homepage
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
       
