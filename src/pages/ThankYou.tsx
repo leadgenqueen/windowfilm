@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PhoneButton } from "@/components/PhoneButton";
 import { Footer } from "@/components/Footer";
+import logoImage from "@/assets/emerald-coast-logo.png";
 
 export const ThankYouPage = () => {
   return (
@@ -11,7 +12,7 @@ export const ThankYouPage = () => {
       <div className="bg-gradient-coastal text-white py-4">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-accent">Emerald Coast Window Films</h1>
+            <img src={logoImage} alt="Emerald Coast Window Films" className="h-12 md:h-16" />
             <PhoneButton variant="inline" className="bg-accent hover:bg-accent/90 text-accent-foreground" />
           </div>
         </div>
