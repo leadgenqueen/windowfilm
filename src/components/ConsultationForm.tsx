@@ -44,21 +44,8 @@ export const ConsultationForm = () => {
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
-      toast({
-        title: "Consultation Scheduled!",
-        description: "We'll contact you within 2 hours to schedule your free $500 consultation.",
-      });
-      
-      // Reset form
-      setFormData({
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-        message: "",
-        transactionalConsent: false,
-        promotionalConsent: false
-      });
+      // Redirect to thank you page
+      window.location.href = "/thank-you";
     }, 2000);
   };
 
