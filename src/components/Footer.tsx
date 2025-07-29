@@ -71,8 +71,8 @@ export const Footer = () => {
               </p>
             </div>
             <div className="flex space-x-6 text-sm text-coastal-blue-light">
-              <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
+              <a href="https://www.emeraldcoastglass.com/privacy-policy" className="hover:text-accent transition-colors">Privacy Policy</a>
+              <a href="https://www.emeraldcoastglass.com/terms-of-service" className="hover:text-accent transition-colors">Terms of Service</a>
             </div>
           </div>
           <div className="text-center mt-4">
