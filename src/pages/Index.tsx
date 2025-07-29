@@ -1,12 +1,29 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { HeroSection } from "@/components/HeroSection";
+import { ReviewsSection } from "@/components/ReviewsSection";
+import { OfferSection } from "@/components/OfferSection";
+import { WhoItsForSection } from "@/components/WhoItsForSection";
+import { WhyChooseUsSection } from "@/components/WhyChooseUsSection";
+import { ResultsSection } from "@/components/ResultsSection";
+import { FAQSection } from "@/components/FAQSection";
+import { ConsultationForm } from "@/components/ConsultationForm";
+import { Footer } from "@/components/Footer";
+import { PhoneButton } from "@/components/PhoneButton";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <HeroSection />
+      <ReviewsSection />
+      <OfferSection />
+      <WhoItsForSection />
+      <WhyChooseUsSection />
+      <ResultsSection />
+      <FAQSection />
+      <ConsultationForm />
+      <Footer />
+      
+      {/* Sticky Mobile Phone Button */}
+      <PhoneButton variant="sticky" />
     </div>
   );
 };

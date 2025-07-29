@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Custom colors for Emerald Coast Window Films
+				'coastal-blue': 'hsl(var(--coastal-blue))',
+				'coastal-blue-light': 'hsl(var(--coastal-blue-light))',
+				'ocean-deep': 'hsl(var(--ocean-deep))',
+				'sand-warm': 'hsl(var(--sand-warm))',
+				'success-green': 'hsl(var(--success-green))',
+				'trust-gold': 'hsl(var(--trust-gold))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -62,6 +69,16 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				'gradient-coastal': 'var(--gradient-coastal)',
+				'gradient-warm': 'var(--gradient-warm)',
+				'gradient-hero': 'var(--gradient-hero)',
+			},
+			boxShadow: {
+				'premium': 'var(--shadow-premium)',
+				'card': 'var(--shadow-card)',
+				'cta': 'var(--shadow-cta)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
