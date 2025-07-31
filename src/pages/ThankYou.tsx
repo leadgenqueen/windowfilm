@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { PhoneButton } from "@/components/PhoneButton";
 import { Footer } from "@/components/Footer";
 import logoImage from "@/assets/emerald-coast-logo-updated.png";
-import verifiedReviewsImage from "@/assets/verified-google-reviews.png";
 
 export const ThankYouPage = () => {
   return (
@@ -154,10 +153,6 @@ export const ThankYouPage = () => {
                 Join 1000+ Satisfied Gulf Coast Customers
               </h2>
               
-              <div className="flex items-center justify-center mb-6">
-                <img src={verifiedReviewsImage} alt="Verified Google Reviews" className="max-h-20 object-contain" />
-              </div>
-
               <div className="flex items-center justify-center space-x-2 mb-6">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="h-8 w-8 fill-trust-gold text-trust-gold" />
