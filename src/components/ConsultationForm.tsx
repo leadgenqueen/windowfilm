@@ -41,12 +41,42 @@ export const ConsultationForm = () => {
 
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const response = await fetch("https://n8n.powerupstrategy.com/webhook/7f68eefb-6ac6-4a74-8ec8-f4e7a9a0403e", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors", // Handle CORS
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+          source: "emerald-coast-window-films",
+          page: "consultation-form"
+        }),
+      });
+
+      // Since we're using no-cors, we won't get a proper response status
+      // Show success message and redirect
+      toast({
+        title: "Success!",
+        description: "Your consultation request has been submitted. We'll contact you within 2 hours.",
+      });
+
+      // Redirect to thank you page after successful submission
+      setTimeout(() => {
+        window.location.href = "/thank-you";
+      }, 1500);
+
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was an issue submitting your request. Please try again or call us directly.",
+        variant: "destructive"
+      });
       setIsSubmitting(false);
-      // Redirect to thank you page
-      window.location.href = "/thank-you";
-    }, 2000);
+    }
   };
 
   return (
