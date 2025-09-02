@@ -44,8 +44,8 @@ export const ConsultationForm = () => {
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
-      // Redirect to external thank you page
-      window.location.href = "https://go.emeraldcoastglass.com/window-films-thank-you";
+      // Redirect to thank you page
+      window.location.href = "/thank-you";
     }, 2000);
   };
 
