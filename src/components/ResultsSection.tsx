@@ -9,7 +9,7 @@ export const ResultsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Feel the Difference Immediately
+            Feel the Difference
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             See the dramatic transformation window film makes in Gulf Coast homes. 
