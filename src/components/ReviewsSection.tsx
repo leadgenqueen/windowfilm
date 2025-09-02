@@ -42,7 +42,7 @@ export const ReviewsSection = () => {
           <div className="flex items-center justify-center space-x-2 mb-4">
             {[...Array(5)].map((_, i) => <Star key={i} className="h-8 w-8 fill-trust-gold text-trust-gold" />)}
             <span className="text-2xl font-bold text-foreground ml-2">5.0</span>
-            <span className="text-muted-foreground">• 160+ Google Reviews</span>
+            <a href="https://nicejob.com/emerald-coast-window-films" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-coastal-blue transition-colors">• 160+ Google Reviews</a>
           </div>
         </div>
 
