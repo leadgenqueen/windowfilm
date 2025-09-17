@@ -43,37 +43,33 @@ export const ConsultationForm = () => {
     
     try {
       const url = "https://n8n.powerupstrategy.com/webhook/7f68eefb-6ac6-4a74-8ec8-f4e7a9a0403e";
-      const payload = {
-        ...formData,
+      
+      // Build flat form data object
+      const formDataToSend = new URLSearchParams({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: formData.phone,
+        email: formData.email,
+        message: formData.message,
+        transactionalConsent: String(formData.transactionalConsent),
+        promotionalConsent: String(formData.promotionalConsent),
         timestamp: new Date().toISOString(),
         source: "emerald-coast-window-films",
-        page: "consultation-form",
-      };
-
-      console.log("🔄 Attempting webhook submission with payload:", payload);
-
-      // Attempt standard JSON POST first (requires CORS allowed by server)
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 10000);
-
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-        signal: controller.signal,
+        page: "consultation-form"
       });
 
-      clearTimeout(timeoutId);
-      console.log("✅ Primary fetch response status:", response.status);
+      console.log("🔄 Submitting form data to webhook...");
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: formDataToSend,
+      });
 
-      // Success - show message and redirect
-      console.log("✅ Primary webhook submission successful");
+      console.log("✅ Form submitted successfully");
       toast({
         title: "Success!",
         description: "Your consultation request has been submitted. We'll contact you within 2 hours.",
@@ -81,101 +77,16 @@ export const ConsultationForm = () => {
 
       setTimeout(() => {
         window.location.href = "/thank-you";
-      }, 1200);
-    } catch (primaryError) {
-      console.error("❌ Primary webhook POST failed:", primaryError);
-
-      // Fallback: use sendBeacon to bypass CORS (sends as text/plain with JSON string)
-      try {
-        console.log("🔄 Attempting sendBeacon fallback...");
-        const url = "https://n8n.powerupstrategy.com/webhook/7f68eefb-6ac6-4a74-8ec8-f4e7a9a0403e";
-        const payload = {
-          ...formData,
-          timestamp: new Date().toISOString(),
-          source: "emerald-coast-window-films",
-          page: "consultation-form",
-          transport: "beacon-fallback",
-        };
-        
-        console.log("📤 SendBeacon payload:", payload);
-        let sent = false;
-        if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
-          const blob = new Blob([JSON.stringify(payload)], { type: "text/plain;charset=UTF-8" });
-          sent = navigator.sendBeacon(url, blob);
-          console.log("📡 SendBeacon result:", sent);
-        }
-
-        if (sent) {
-          console.log("✅ Beacon fallback successful");
-          toast({
-            title: "Success!",
-            description: "Your consultation request has been submitted.",
-          });
-          setTimeout(() => {
-            window.location.href = "/thank-you";
-          }, 1000);
-          return;
-        }
-
-        throw new Error("Beacon fallback not supported or failed to send");
-      } catch (fallbackError) {
-        console.error("❌ Beacon fallback failed:", fallbackError);
-        try {
-          console.log("🔄 Attempting HTML form POST fallback...");
-          const url = "https://n8n.powerupstrategy.com/webhook/7f68eefb-6ac6-4a74-8ec8-f4e7a9a0403e";
-          const payload = {
-            ...formData,
-            timestamp: new Date().toISOString(),
-            source: "emerald-coast-window-films",
-            page: "consultation-form",
-            transport: "html-form-fallback",
-          };
-
-          // Ensure hidden iframe exists
-          let iframe = document.getElementById("webhook_iframe") as HTMLIFrameElement | null;
-          if (!iframe) {
-            iframe = document.createElement("iframe");
-            iframe.name = "webhook_iframe";
-            iframe.id = "webhook_iframe";
-            iframe.style.display = "none";
-            document.body.appendChild(iframe);
-          }
-
-          // Build and submit hidden form
-          const formEl = document.createElement("form");
-          formEl.action = url;
-          formEl.method = "POST";
-          formEl.target = "webhook_iframe";
-          formEl.style.display = "none";
-          Object.entries(payload).forEach(([key, value]) => {
-            const input = document.createElement("input");
-            input.type = "hidden";
-            input.name = key;
-            input.value = typeof value === "string" ? value : JSON.stringify(value);
-            formEl.appendChild(input);
-          });
-          document.body.appendChild(formEl);
-          formEl.submit();
-
-          console.log("✅ HTML form POST submitted");
-          toast({
-            title: "Success!",
-            description: "Your consultation request has been submitted.",
-          });
-          setTimeout(() => {
-            window.location.href = "/thank-you";
-          }, 1000);
-          return;
-        } catch (htmlFallbackError) {
-          console.error("❌ HTML form fallback failed:", htmlFallbackError);
-          toast({
-            title: "Submission Error",
-            description: "There was an issue submitting your request. Please try again or call us directly.",
-            variant: "destructive",
-          });
-          setIsSubmitting(false);
-        }
-      }
+      }, 800);
+      
+    } catch (error) {
+      console.error("❌ Form submission failed:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was an issue submitting your request. Please try again or call us directly.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
     }
   };
 
