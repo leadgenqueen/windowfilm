@@ -47,7 +47,6 @@ export const ConsultationForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        mode: "no-cors", // Handle CORS
         body: JSON.stringify({
           ...formData,
           timestamp: new Date().toISOString(),
