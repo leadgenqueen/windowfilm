@@ -1,12 +1,19 @@
+import { useEffect } from "react";
 import { CheckCircle, Phone, Calendar, Star, Clock, Shield } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PhoneButton } from "@/components/PhoneButton";
 import { Footer } from "@/components/Footer";
+import { trackEvent } from "@/lib/facebook-pixel";
 import logoImage from "@/assets/emerald-coast-logo-updated.png";
 import verifiedReviewsImage from "@/assets/verified-google-reviews.png";
 
 export const ThankYouPage = () => {
+  // Fire Meta ads lead event when thank you page loads
+  useEffect(() => {
+    trackEvent('Lead');
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-warm">
       {/* Header */}
