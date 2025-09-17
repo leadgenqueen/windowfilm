@@ -50,6 +50,8 @@ export const ConsultationForm = () => {
         page: "consultation-form",
       };
 
+      console.log("🔄 Attempting webhook submission with payload:", payload);
+
       // Attempt standard JSON POST first (requires CORS allowed by server)
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
@@ -64,12 +66,14 @@ export const ConsultationForm = () => {
       });
 
       clearTimeout(timeoutId);
+      console.log("✅ Primary fetch response status:", response.status);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       // Success - show message and redirect
+      console.log("✅ Primary webhook submission successful");
       toast({
         title: "Success!",
         description: "Your consultation request has been submitted. We'll contact you within 2 hours.",
@@ -79,10 +83,11 @@ export const ConsultationForm = () => {
         window.location.href = "/thank-you";
       }, 1200);
     } catch (primaryError) {
-      console.error("Primary webhook POST failed:", primaryError);
+      console.error("❌ Primary webhook POST failed:", primaryError);
 
       // Fallback: use sendBeacon to bypass CORS (sends as text/plain with JSON string)
       try {
+        console.log("🔄 Attempting sendBeacon fallback...");
         const url = "https://n8n.powerupstrategy.com/webhook/7f68eefb-6ac6-4a74-8ec8-f4e7a9a0403e";
         const payload = {
           ...formData,
@@ -91,13 +96,17 @@ export const ConsultationForm = () => {
           page: "consultation-form",
           transport: "beacon-fallback",
         };
+        
+        console.log("📤 SendBeacon payload:", payload);
         let sent = false;
         if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
           const blob = new Blob([JSON.stringify(payload)], { type: "text/plain;charset=UTF-8" });
           sent = navigator.sendBeacon(url, blob);
+          console.log("📡 SendBeacon result:", sent);
         }
 
         if (sent) {
+          console.log("✅ Beacon fallback successful");
           toast({
             title: "Success!",
             description: "Your consultation request has been submitted.",
@@ -110,7 +119,7 @@ export const ConsultationForm = () => {
 
         throw new Error("Beacon fallback not supported or failed to send");
       } catch (fallbackError) {
-        console.error("Beacon fallback failed:", fallbackError);
+        console.error("❌ Beacon fallback failed:", fallbackError);
         toast({
           title: "Submission Error",
           description: "There was an issue submitting your request. Please try again or call us directly.",
