@@ -55,8 +55,11 @@ export const ConsultationForm = () => {
         }),
       });
 
-      // Since we're using no-cors, we won't get a proper response status
-      // Show success message and redirect
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Success - show message and redirect
       toast({
         title: "Success!",
         description: "Your consultation request has been submitted. We'll contact you within 2 hours.",
