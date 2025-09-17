@@ -42,18 +42,28 @@ export const ConsultationForm = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://n8n.powerupstrategy.com/webhook/7f68eefb-6ac6-4a74-8ec8-f4e7a9a0403e", {
+      const url = "https://n8n.powerupstrategy.com/webhook/7f68eefb-6ac6-4a74-8ec8-f4e7a9a0403e";
+      const payload = {
+        ...formData,
+        timestamp: new Date().toISOString(),
+        source: "emerald-coast-window-films",
+        page: "consultation-form",
+      };
+
+      // Attempt standard JSON POST first (requires CORS allowed by server)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ...formData,
-          timestamp: new Date().toISOString(),
-          source: "emerald-coast-window-films",
-          page: "consultation-form"
-        }),
+        body: JSON.stringify(payload),
+        signal: controller.signal,
       });
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -65,19 +75,49 @@ export const ConsultationForm = () => {
         description: "Your consultation request has been submitted. We'll contact you within 2 hours.",
       });
 
-      // Redirect to thank you page after successful submission
       setTimeout(() => {
         window.location.href = "/thank-you";
-      }, 1500);
+      }, 1200);
+    } catch (primaryError) {
+      console.error("Primary webhook POST failed:", primaryError);
 
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      toast({
-        title: "Submission Error",
-        description: "There was an issue submitting your request. Please try again or call us directly.",
-        variant: "destructive"
-      });
-      setIsSubmitting(false);
+      // Fallback: use sendBeacon to bypass CORS (sends as text/plain with JSON string)
+      try {
+        const url = "https://n8n.powerupstrategy.com/webhook/7f68eefb-6ac6-4a74-8ec8-f4e7a9a0403e";
+        const payload = {
+          ...formData,
+          timestamp: new Date().toISOString(),
+          source: "emerald-coast-window-films",
+          page: "consultation-form",
+          transport: "beacon-fallback",
+        };
+        let sent = false;
+        if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {
+          const blob = new Blob([JSON.stringify(payload)], { type: "text/plain;charset=UTF-8" });
+          sent = navigator.sendBeacon(url, blob);
+        }
+
+        if (sent) {
+          toast({
+            title: "Success!",
+            description: "Your consultation request has been submitted.",
+          });
+          setTimeout(() => {
+            window.location.href = "/thank-you";
+          }, 1000);
+          return;
+        }
+
+        throw new Error("Beacon fallback not supported or failed to send");
+      } catch (fallbackError) {
+        console.error("Beacon fallback failed:", fallbackError);
+        toast({
+          title: "Submission Error",
+          description: "There was an issue submitting your request. Please try again or call us directly.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+      }
     }
   };
 
