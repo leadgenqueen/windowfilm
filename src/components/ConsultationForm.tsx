@@ -61,14 +61,13 @@ export const ConsultationForm = () => {
       console.log("🔄 Submitting form data to webhook...");
       console.log("Payload:", formDataToSend.toString());
 
-      await fetch(url, {
-        method: "POST",
+      const fullUrl = `${url}?${formDataToSend.toString()}`;
+      console.log("GET URL:", fullUrl);
+
+      await fetch(fullUrl, {
+        method: "GET",
         mode: "no-cors",
         keepalive: true,
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-        },
-        body: formDataToSend.toString(),
       });
 
       console.log("✅ Form submitted successfully");
