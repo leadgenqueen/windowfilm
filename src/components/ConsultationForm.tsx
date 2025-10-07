@@ -42,7 +42,7 @@ export const ConsultationForm = () => {
     setIsSubmitting(true);
     
     try {
-      const url = "https://n8n.powerupstrategy.com/webhook/7f68eefb-6ac6-4a74-8ec8-f4e7a9a0403e";
+      const url = "https://hook.us1.make.com/6f6a52y7j3k6wo0xodhefdm8o9jysy58";
       
       // Build flat form data object
       const formDataToSend = new URLSearchParams({
