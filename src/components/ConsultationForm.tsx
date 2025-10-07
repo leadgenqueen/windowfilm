@@ -71,10 +71,6 @@ export const ConsultationForm = () => {
       });
 
       console.log("✅ Form submitted successfully");
-      toast({
-        title: "Success!",
-        description: "Your consultation request has been submitted. We'll contact you within 2 hours.",
-      });
 
       setTimeout(() => {
         window.location.href = "/thank-you";
